@@ -1,0 +1,58 @@
+﻿@model PaginatedList<ProductViewModel>
+
+@{
+    ViewData["Title"] = "Shop";
+}
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<div class="row mt-3 p-2">
+    <div class="col-md-5">
+        <div class="page-header">
+            <span class="card-title h2 text-dark">Our Products</span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="page-header">
+            @if (ViewBag.CurrentFilter != null)
+            {
+                <span class="card-title font-weight-bold text-dark">Search for :<span class="text-info pl-2">@ViewBag.CurrentFilter</span></span>
+            }
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Sort By @ViewData["SortStatus"]
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]" asp-route-Category="@ViewData["Category"]">Name @ViewData["ChangeSort1"]</a>
+                <a class="dropdown-item" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]" asp-route-Category="@ViewData["Category"]">Price @ViewData["ChangeSort2"]</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-2 border">
+    <div class="row pl-3 pr-3 pb-3">
+        @foreach (var item in Model)
+        {
+            <div class="col-3">
+
+                <partial name="_ProductPartial" model="item" />
+
+            </div>}
+    </div>
+    <div class="float-right mt-2">
+        <a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]" asp-route-Category="@ViewData["Category"]"
+           class="btn btn-primary @prevDisabled">
+            <<
+        </a>
+        <a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]" asp-route-Category="@ViewData["Category"]"
+           class="btn btn-info @nextDisabled">
+           >>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model BannerViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Banner</h4>
+<hr />
+<div class="card-body ">
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row px-md-5">
+            <div class="col-lg-7">
+                <div class="col-lg-5 pl-md-5">
+                    <img src="~/images/Default.png" class="img-fluid pb-1" id="imagePreview" style="width:225px;height:170px" />
+                    <p>Upload one Image</p>
+                    <div class="form-group">
+                        <div class="custom-file">
+                            <input type="file" asp-for="Image" class="custom-file-input" id="customFile" accept=".jpeg, .png, .jpg" onchange="ShowImagePreview(this, document.getElementById('imagePreview'))" />
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            <span asp-validation-for="Image" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

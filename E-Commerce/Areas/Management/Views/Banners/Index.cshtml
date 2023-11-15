@@ -1,0 +1,28 @@
+﻿@model BannerIndexViewModel
+
+@{ ViewData["Title"] = "Banners"; }
+
+<div class="card o-hidden border-0 shadow-lg">
+    <div class="card-header align-items-center justify-content-between">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <div class="font-weight-bold h4 text-info mb-0">List of Banners</div>
+            <a asp-action="Create" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm mt-2"><i class="fas fa-plus fa-sm text-white-50"></i> New Banner</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-sm table-responsive-md" id="datatable" width="100%">
+            <thead class="table-light"></thead>
+
+
+                @foreach (var item in Model.Banners)
+                {
+    <div>
+        <img src="@Url.Content(item.ImagePath)" style="height:200px;width:100%" />
+    </div>
+
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+}
+        </table>
+    </div>
+</div>

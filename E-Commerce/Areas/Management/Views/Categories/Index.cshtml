@@ -1,0 +1,56 @@
+﻿@model CategoryIndexViewModel
+
+@{ ViewData["Title"] = "Categories"; }
+
+<div class="card o-hidden border-0 shadow-lg">
+    <div class="card-header align-items-center justify-content-between">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <div class="font-weight-bold h4 text-info mb-0">List of Categories</div>
+            <a asp-action="Create" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm mt-2"><i class="fas fa-plus fa-sm text-white-50"></i> New Category</a>
+            <a asp-controller="SubCategories" asp-action="Create" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm mt-2"><i class="fas fa-plus fa-sm text-white-50"></i> New Sub-Category</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="mdl-data-table" id="datatable" width="100%">
+            <thead class="table-light">
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Categories)
+                {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+            <ol type="i" class="pl-5">
+                @foreach (var subItem in item.SubCategories)
+                {
+<li>
+    @Html.DisplayFor(modelItem => subItem.Name)
+    <div class="pr-5">
+        <a asp-controller="SubCategories" asp-action="Edit" asp-route-id="@subItem.ID">Edit</a> |
+        <a asp-controller="SubCategories" asp-action="Details" asp-route-id="@subItem.ID">Details</a> |
+        <a asp-controller="SubCategories" asp-action="Delete" asp-route-id="@subItem.ID">Delete</a>
+    </div>
+</li>
+}
+            </ol>
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+        </td>
+    </tr>
+}
+            </tbody>
+        </table>
+    </div>
+</div>

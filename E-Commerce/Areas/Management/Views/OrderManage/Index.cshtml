@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Order>
+
+@{ ViewData["Title"] = "Orders"; }
+
+<div class="card o-hidden border-0 shadow-lg">
+    <div class="card-header align-items-center justify-content-between">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <div class="font-weight-bold h4 text-info mb-0">List of Order</div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-sm table-responsive-md" id="datatable" width="100%">
+            <thead class="table-light">
+                <tr>
+                    <th>
+                        Buyer
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        TotalPrice
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @if (item.Status != OrderStatus.Accepted)
+                        {
+                    <a asp-action="UpdateStatus" asp-route-id="@item.ID" asp-route-status="@OrderStatus.Accepted">Accept</a>}
+                        @if (item.Status != OrderStatus.Rejected)
+                        {
+                    <a asp-action="UpdateStatus" asp-route-id="@item.ID" asp-route-status="@OrderStatus.Rejected">Reject</a>}
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                    </td>
+                </tr>}
+
+            </tbody>
+        </table>
+    </div>
+</div>

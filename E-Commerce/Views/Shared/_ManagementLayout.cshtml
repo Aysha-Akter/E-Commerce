@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] E-Commerce Dashboard</title>
+    <link rel="shortcut icon" type="image/jpg" href="~/images/logo1.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link href="~/lib/DataTables/datatables.css" rel="stylesheet" />
+    <link href="~/css/dashboard.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/Sidebar.css" rel="stylesheet" asp-append-version="true" />
+</head>
+<body>
+    <div class="wrapper ">
+        <partial name="_SidebarPartial" />
+        <div class="main-panel">
+            <partial name="_NavBarPartial" />
+            <div class="content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <nav class="float-left">
+                        <ul>
+                            <li>
+                                <a href="https://www.creative-tim.com">
+                                    Aysha Akter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://creative-tim.com/presentation">
+                                    About Me
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://blog.creative-tim.com">
+                                    Blog
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.creative-tim.com/license">
+                                    Licenses
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="copyright float-right">
+                        &copy;
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>, made by
+                        <a href="https://www.creative-tim.com" target="_blank">Aysha Akter</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/popper.js/umd/popper.min.js"></script>
+    <script src="~/lib/bootstrap-material-design/bootstrap-material-design.umd.min.js"></script>
+    <script src="~/lib/jquery.perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/lib/DataTables/datatables.js"></script>
+    <script src="~/lib/DataTables/Buttons-1.6.1/js/dataTables.buttons.js"></script>
+
+    <script src="~/js/dashboard.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

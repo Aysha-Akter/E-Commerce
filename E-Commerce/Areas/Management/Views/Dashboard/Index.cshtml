@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">account_balance</i>
+                </div>
+                <p class="card-category">Total Income</p>
+                <h3 class="card-title">@ViewBag.Total_Income</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">account_balance_wallet</i>
+                    Total Income in @DateTime.Now.ToString("MMMMMMMMMMMMM") : @ViewBag.Total_MonthlyIncome
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-info card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">shopping_cart</i>
+                </div>
+                <p class="card-category">Total Order</p>
+                <h3 class="card-title">@ViewBag.Orders</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">local_offer</i>
+                    Total Order in @DateTime.Now.ToString("MMMMMMMMMMMMM") : @ViewBag.Total_MonthlyOrder
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-primary card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">content_copy</i>
+                </div>
+                <p class="card-category">Total Sale</p>
+                <h3 class="card-title">
+                    @ViewBag.Sales
+                </h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">local_offer</i>
+                    Total Sale in @DateTime.Now.ToString("MMMMMMMMMMMMM") : @ViewBag.MonthlySale
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-rose card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">people</i>
+                </div>
+                <p class="card-category">Total Customer</p>
+                <h3 class="card-title">
+                    @ViewBag.Customer
+                </h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">local_offer</i>
+                    New Customer : @ViewBag.NewCustomer
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-info card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">production_quantity_limits</i>
+                </div>
+                <p class="card-category">Total Products</p>
+                <h3 class="card-title">
+                    @ViewBag.Products
+                </h3>
+            </div>
+            <div class="card-footer">
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-pills card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">store</i>
+                </div>
+                <p class="card-category">Total Stock</p>
+                <h3 class="card-title">
+                    @ViewBag.Stock
+                </h3>
+            </div>
+            <div class="card-footer">
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-warning card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">pending</i>
+                </div>
+                <p class="card-category">Pending Orders</p>
+                <h3 class="card-title">
+                    @ViewBag.PendingOrders
+                </h3>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">done_all</i>
+                </div>
+                <p class="card-category">Confirm Orders</p>
+                <h3 class="card-title">@ViewBag.AcceptOrder</h3>
+            </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

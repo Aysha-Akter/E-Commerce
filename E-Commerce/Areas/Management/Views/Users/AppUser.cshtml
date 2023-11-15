@@ -1,0 +1,102 @@
+﻿@model ApplicationUserViewModel
+
+@{ ViewData["Title"] = "App User"; }
+
+<div class="card o-hidden border-0 shadow-lg">
+    <div class="card-header align-items-center justify-content-between">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <div class="font-weight-bold h4 text-info mb-0">List of User</div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-sm table-responsive-md" id="datatable" width="100%">
+            <thead class="table-light">
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        UserName
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Confirmed
+                    </th>
+                    <th>
+                        Phone No.
+                    </th>
+                    <th>
+                        Date of Birth
+                    </th>
+                    <th>
+                        Role
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var admin in Model.Administrators)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => admin.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => admin.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => admin.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => admin.EmailConfirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => admin.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => admin.DOB)
+                </td>
+                <td>
+                    Administrator
+                </td>
+                <td>
+                    <a asp-action="EditUser" asp-route-id="@admin.Id">Edit</a>
+                </td>
+            </tr>}
+
+                @foreach (var user in Model.Users)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => user.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.EmailConfirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.DOB)
+                </td>
+                <td>
+                    User
+                </td>
+                <td>
+                    <a asp-action="EditUser" asp-route-id="@user.Id">Edit</a> |
+                    <a asp-action="DeleteUser" asp-route-id="@user.Id">Delete</a>
+                </td>
+            </tr>}
+            </tbody>
+        </table>
+    </div>
+</div>

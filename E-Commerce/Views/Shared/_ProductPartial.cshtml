@@ -1,0 +1,55 @@
+﻿@model ProductViewModel
+
+<form method="post">
+    <input type="hidden" asp-for="@Model.ID"/>
+    <div class="card product-card card--default mb-2">
+        @*@if (Model.IsHot)
+        {
+            <div class="hot-label">Hot</div>
+        }
+        else
+        {
+            @if (Model.IsNew)
+            {
+                <div class="new-label">New</div>
+            }
+        }*@
+        @if (Model.HasDiscount)
+        {
+            <div class="sale-label">@Html.DisplayFor(model => model.Discount)</div>
+        }
+        <a asp-controller="Shop" asp-action="Details" asp-route-id="@Model.ID" class="card-img-hover d-block">
+            <img src="@Url.Content(Model.ImagePath)" class="card-img-top card-img-back" alt="@Html.DisplayFor(model => model.Name)" style="height:200px;Width:100%">
+        </a>
+        <div class="card-info">
+            <div class="card-body">
+                @*<div class="product_img_switch">
+                    @foreach (var item in Model.ImagePaths)
+                    {
+                        <span data-toggle="tooltip" data-placement="top" title="" data-original-title=""><img src="@Url.Content(item)" alt="@Html.DisplayFor(model => model.Name)"></span>
+                    }
+                </div>*@
+                <div class="product-title font-w-5"><a asp-controller="Shop" asp-action="Details" asp-route-id="@Model.ID" class="link-title">@Html.DisplayFor(model => model.Name)</a> </div>
+                <div class="mt-1">
+                    @if (Model.HasDiscount)
+                    {
+                        <span class="product-price text-pink"><del class="text-muted">@Html.DisplayFor(model => model.Price)</del> @Html.DisplayFor(model => model.PriceNow)</span>
+
+                    }
+                    else
+                    {
+                        <span class="product-price text-pink">@Html.DisplayFor(model => model.PriceNow)</span>
+                    }
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-0">
+                <div class="product-link d-flex align-items-center justify-content-center">
+                    <button type="submit" asp-controller="Cart" asp-action="Add" asp-route-returnUrl="@Context.Request.GetEncodedPathAndQuery()" class="btn-cart btn btn-outline-info mx-3">
+                        <i class="fad fa-shopping-cart"></i>
+                        <span>Add To Cart</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

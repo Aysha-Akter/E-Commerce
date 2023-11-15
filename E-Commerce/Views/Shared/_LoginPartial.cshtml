@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using E_Commerce.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+    <li class="d-flex flex-row align-items-center justify-content-between">
+        <div class="nav-item dropdown no-arrow mx-1 float-left">
+            @await Component.InvokeAsync("Cart")
+        </div>
+    </li>
+    @if (SignInManager.IsSignedIn(User))
+    {
+<li class="d-flex flex-row align-items-center justify-content-between">
+    @*<a class="nav-link text-dark" style="border-radius:initial;" asp-area="Identity" asp-page="/Account/Register">
+            <i class="fas fa-envelope fa-fw"></i>
+        </a>*@
+    <div class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle text-dark" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle fa-fw"></i>
+            <span class="ml-2 d-none d-lg-inline text-gray-600 small"> @User.Identity.Name</span>
+        </a>
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+            <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                <span>Profile</span>
+            </a>
+            <a class="dropdown-item" asp-area="" asp-controller="Orders" asp-action="Index" title="Orders">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                <span>Orders</span>
+            </a>
+            @if (User.IsInRole("Admin"))
+            {
+        <a class="dropdown-item" asp-area="Management" asp-controller="Dashboard" asp-action="Index">
+            <i class="fas fa-tachometer-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            <span>Dashboard</span>
+        </a>}
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Logout
+            </a>
+        </div>
+    </div>
+</li> }
+            else
+            {
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+</li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                </li>}
+</ul>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

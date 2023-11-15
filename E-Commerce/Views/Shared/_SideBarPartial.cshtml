@@ -1,0 +1,88 @@
+﻿<div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+    <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+    <div class="logo">
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="simple-text logo-normal">
+           E-Commerce
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li class="nav-item active">
+                <a class="nav-link" asp-controller="Dashboard" asp-action="Index">
+                    <i class="material-icons">dashboard</i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" asp-controller="Users" asp-action="AppUser">
+                    <i class="material-icons">person</i>
+                    <p>User Profile</p>
+                </a>
+            </li>
+
+
+
+
+            <li class="nav-item ">
+                <button class="accordion">
+                    <i class="material-icons">add_to_queue</i>
+                    <p>UI Management</p>
+                </button>
+                <ul class="nav panel">
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-controller="Banners" asp-action="Index">
+                            <i class="material-icons">insert_photo</i>
+                            <p>Banners</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+          
+
+
+            <li class="nav-item ">
+                <button class="accordion">
+                    <i class="material-icons">local_grocery_store</i>
+                    <p>Product Management</p>
+                </button>
+                <ul class="nav panel">
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-controller="Brands" asp-action="Index">
+                            <i class="material-icons">verified</i>
+                            <p>Brands</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-controller="Categories" asp-action="Index">
+                            <i class="material-icons">view_list</i>
+                            <p>Categories</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-controller="Sizes" asp-action="Index">
+                            <i class="material-icons">integration_instructions</i>
+                            <p>Sizes</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-controller="Products" asp-action="Index">
+                            <i class="material-icons">local_grocery_store</i>
+                            <p>Products</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" asp-controller="OrderManage" asp-action="Index">
+                    <i class="material-icons">location_ons</i>
+                    <p>Orders</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

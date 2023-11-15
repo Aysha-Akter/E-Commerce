@@ -1,0 +1,35 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "popper.js@2.6.0",
+      "destination": "wwwroot/lib/popper.js/",
+      "files": [
+        "umd/popper.min.js"
+      ]
+    },
+    {
+      "library": "bootstrap-material-design@4.0.2",
+      "destination": "wwwroot/lib/bootstrap-material-design/",
+      "files": [
+        "bootstrap-material-design.umd.min.js"
+      ]
+    },
+    {
+      "library": "jquery.perfect-scrollbar@1.5.0",
+      "destination": "wwwroot/lib/jquery.perfect-scrollbar/",
+      "files": [
+        "perfect-scrollbar.min.js"
+      ]
+    },
+    {
+      "library": "qrcodejs@1.0.0",
+      "destination": "wwwroot/lib/qrcodejs/",
+      "files": [
+        "qrcode.min.js",
+        "qrcode.js"
+      ]
+    }
+  ]
+}

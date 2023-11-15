@@ -1,0 +1,80 @@
+﻿@model ProductViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="card-body ">
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row px-md-5">
+            <div class="col-lg-7">
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Discount" class="control-label"></label>
+                    <input asp-for="Discount" class="form-control" />
+                    <span asp-validation-for="Discount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Stock" class="control-label"></label>
+                    <input asp-for="Stock" class="form-control" />
+                    <span asp-validation-for="Stock" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SizeID" class="control-label"></label>
+                    <select asp-for="SizeID" class="form-control" asp-items="ViewBag.SizeID"></select>
+                    <span asp-validation-for="SizeID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BrandID" class="control-label"></label>
+                    <select asp-for="BrandID" class="form-control" asp-items="ViewBag.BrandID"></select>
+                    <span asp-validation-for="BrandID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SubCategoryID" class="control-label"></label>
+                    <select asp-for="SubCategoryID" class="form-control" asp-items="ViewBag.SubCategoryID"></select>
+                    <span asp-validation-for="SubCategoryID" class="text-danger"></span>
+                </div>
+                <div class="col-lg-5 pl-md-5">
+                    <img src="~/images/Default.png" class="img-fluid pb-1" id="imagePreview" style="width:225px;height:170px" />
+                    <p>Upload one Image</p>
+                    <div class="form-group">
+                        <div class="custom-file">
+                            <input type="file" asp-for="Image" class="custom-file-input" id="customFile" accept=".jpeg, .png, .jpg" onchange="ShowImagePreview(this, document.getElementById('imagePreview'))" />
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Input" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

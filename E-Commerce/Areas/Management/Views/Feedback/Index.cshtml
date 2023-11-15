@@ -1,0 +1,59 @@
+﻿@model IEnumerable<E_Commerce.Models.CustomerFeedback.Feedback>
+
+@{
+    ViewData["Title"] = "Feedback";
+}
+
+<div class="card o-hidden border-0 shadow-lg">
+    <div class="card-header align-items-center justify-content-between">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <div class="font-weight-bold h4 text-info mb-0">List of Customer Feedback</div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-sm table-responsive-md" id="datatable" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Message)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var read = (item.IsRead == false) ? "bg-info" : "";
+                    <tr class="@read">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Message)
+                        </td>
+                        <td>
+                            <a asp-action="Read" asp-route-id="@item.ID">Mark as Read</a>
+                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
